@@ -1,5 +1,6 @@
 import React from 'react'
 import SplashScreen from './src/main-screens/SplashScreen'
+import { Navigator } from './src/navigation/navigator'
 
 export default class App extends React.Component {
     constructor( props ) {
@@ -37,8 +38,6 @@ export default class App extends React.Component {
 
 
     render() {
-        return <SplashScreen
-                style={{width:'100%', flex:1, backgroundColor: 'blue'}}
-            />
+        return (<Navigator />)
     }
 }
