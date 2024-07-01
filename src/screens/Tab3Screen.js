@@ -16,7 +16,7 @@ export function Tab3Screen() {
   const getNotifications = async () => {
     setLoading(true);
     const data = await pnStorage.getData();
-    setNotifications(data);
+    setNotifications(data || []);
     setLoading(false);
   };
 
@@ -44,17 +44,26 @@ function NotificationCard({item}) {
 
   const openNotificationScreen = () => {
     if (item.data.pn_type == 1) {
-      navigation.navigate('Tab1Screen1', {
-        title: item.notification.title,
-        body: item.notification.body,
+      navigation.navigate('Tab1', {
+        screen: 'Tab1Screen1',
+        params: {
+          title: item.notification.title,
+          body: item.notification.body,
+        },
       });
     } else if (item.data.pn_type == 2) {
-      navigation.navigate('Tab1Screen2', {
-        url_hex: ascii_to_hexa(item.data.img_url),
+      navigation.navigate('Tab1', {
+        screen: 'Tab1Screen2',
+        params: {
+          url_hex: ascii_to_hexa(item.data.img_url),
+        },
       });
     } else if (item.data.pn_type == 3) {
-      navigation.navigate('Tab1Screen3', {
-        url_hex: ascii_to_hexa(item.data.youtube_url),
+      navigation.navigate('Tab1', {
+        screen: 'Tab1Screen3',
+        params: {
+          url_hex: ascii_to_hexa(item.data.youtube_url),
+        },
       });
     }
   };
